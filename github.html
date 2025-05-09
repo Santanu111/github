@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Simple Website</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Custom font - Inter (Tailwind's default sans-serif font is similar) */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Smooth scrolling behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+        /* Simple animation for sections on scroll (optional) */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Custom styling for the contact form message box */
+        .message-box {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        .message-box.success {
+            background-color: #d1fae5; /* Tailwind green-100 */
+            color: #065f46; /* Tailwind green-800 */
+        }
+        .message-box.error {
+            background-color: #fee2e2; /* Tailwind red-100 */
+            color: #991b1b; /* Tailwind red-800 */
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-indigo-600">MyLogo</a>
+            <div class="space-x-4">
+                <a href="#home" class="text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                <a href="#about" class="text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium">About</a>
+                <a href="#services" class="text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium">Services</a>
+                <a href="#contact" class="text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-indigo-600 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="md:hidden hidden bg-white shadow-lg">
+            <a href="#home" class="block text-gray-600 hover:text-indigo-600 px-4 py-2 text-sm">Home</a>
+            <a href="#about" class="block text-gray-600 hover:text-indigo-600 px-4 py-2 text-sm">About</a>
+            <a href="#services" class="block text-gray-600 hover:text-indigo-600 px-4 py-2 text-sm">Services</a>
+            <a href="#contact" class="block text-gray-600 hover:text-indigo-600 px-4 py-2 text-sm">Contact</a>
+        </div>
+    </header>
+
+    <section id="home" class="bg-indigo-600 text-white py-20 md:py-32 fade-in-section">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">Welcome to Our Website!</h1>
+            <p class="text-lg md:text-xl mb-8">We provide amazing solutions for your needs.</p>
+            <a href="#contact" class="bg-white text-indigo-600 font-semibold py-3 px-8 rounded-lg shadow-md hover:bg-gray-100 transition duration-300">Get Started</a>
+        </div>
+    </section>
+
+    <section id="about" class="py-16 md:py-24 bg-white fade-in-section">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">About Us</h2>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-10">
+                    <img src="https://placehold.co/600x400/E2E8F0/4A5568?text=Our+Team" alt="About Us Image" class="rounded-lg shadow-xl w-full h-auto object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/E2E8F0/4A5568?text=Image+Not+Found';">
+                </div>
+                <div class="md:w-1/2">
+                    <p class="text-gray-600 leading-relaxed mb-4">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel dui sed lacus commodo efficitur. Integer vitae nisl nec urna aliquam sollicitudin.
+                        Vivamus nec odio vitae libero rhoncus consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed">
+                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-16 md:py-24 bg-gray-50 fade-in-section">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">Our Services</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div class="text-indigo-600 mb-4">
+                        <i class="fas fa-laptop-code fa-3x"></i> </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Web Development</h3>
+                    <p class="text-gray-600">We build responsive and modern websites tailored to your business needs. Our solutions are scalable and secure.</p>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div class="text-indigo-600 mb-4">
+                        <i class="fas fa-paint-brush fa-3x"></i> </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Graphic Design</h3>
+                    <p class="text-gray-600">Creative designs that capture attention and communicate your brand's message effectively. From logos to marketing materials.</p>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div class="text-indigo-600 mb-4">
+                        <i class="fas fa-chart-line fa-3x"></i> </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Digital Marketing</h3>
+                    <p class="text-gray-600">Boost your online presence with our strategic digital marketing services, including SEO, SMM, and content creation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-16 md:py-24 bg-white fade-in-section">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">Contact Us</h2>
+            <div class="max-w-2xl mx-auto bg-gray-50 p-8 rounded-lg shadow-md">
+                <form id="contactForm">
+                    <div class="mb-6">
+                        <label for="name" class="block text-gray-700 font-medium mb-2">Full Name</label>
+                        <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none" required>
+                    </div>
+                    <div class="mb-6">
+                        <label for="email" class="block text-gray-700 font-medium mb-2">Email Address</label>
+                        <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none" required>
+                    </div>
+                    <div class="mb-6">
+                        <label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
+                        <textarea id="message" name="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none" required></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="bg-indigo-600 text-white font-semibold py-3 px-8 rounded-lg hover:bg-indigo-700 transition duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50">
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <div id="formMessageBox" class="message-box">
+        <span id="formMessageText"></span>
+    </div>
+
+    <footer class="bg-gray-800 text-gray-300 py-12">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; <span id="currentYear"></span> My Simple Website. All rights reserved.</p>
+            <p class="mt-2">Designed with <i class="fas fa-heart text-red-500"></i> by AI</p>
+            <div class="mt-4">
+                <a href="#" class="text-gray-400 hover:text-white mx-2"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-gray-400 hover:text-white mx-2"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-gray-400 hover:text-white mx-2"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-gray-400 hover:text-white mx-2"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript for Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // JavaScript for Smooth Scrolling & Active Nav Link Highlighting (simplified)
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    // Close mobile menu if open after clicking a link
+                    if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+
+        // JavaScript for Fade-in Sections on Scroll
+        const sections = document.querySelectorAll('.fade-in-section');
+        const observerOptions = {
+            root: null, // relative to document viewport
+            rootMargin: '0px',
+            threshold: 0.1 // 10% of item is visible
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    // Optional: unobserve after it's visible if you don't want it to re-trigger
+                    // observer.unobserve(entry.target);
+                } else {
+                    // Optional: remove class if you want animation to re-trigger on scroll up/down
+                    // entry.target.classList.remove('is-visible');
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Contact Form Submission Handler
+        const contactForm = document.getElementById('contactForm');
+        const formMessageBox = document.getElementById('formMessageBox');
+        const formMessageText = document.getElementById('formMessageText');
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent default form submission
+
+                // Basic form validation (you can add more complex validation)
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const message = document.getElementById('message').value.trim();
+
+                if (!name || !email || !message) {
+                    displayFormMessage('Please fill in all fields.', 'error');
+                    return;
+                }
+
+                // Simulate form submission (replace with actual AJAX call to a backend)
+                console.log('Form submitted with:', { name, email, message });
+
+                // Display success message
+                displayFormMessage('Message sent successfully!', 'success');
+
+                // Clear the form
+                contactForm.reset();
+
+                // Hide message box after a few seconds
+                setTimeout(() => {
+                    formMessageBox.style.display = 'none';
+                }, 5000);
+            });
+        }
+
+        function displayFormMessage(message, type) {
+            if (formMessageBox && formMessageText) {
+                formMessageText.textContent = message;
+                formMessageBox.className = 'message-box'; // Reset classes
+                formMessageBox.classList.add(type); // Add 'success' or 'error'
+                formMessageBox.style.display = 'block';
+            }
+        }
+
+    </script>
+</body>
+</html>
